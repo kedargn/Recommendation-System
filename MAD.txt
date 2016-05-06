@@ -1,0 +1,1 @@
+euclidan MAD 0.926598manhattan MAD 0.930078lmax MAD 0.972754

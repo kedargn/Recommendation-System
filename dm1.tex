@@ -1,0 +1,230 @@
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {/home/kedar/Pictures/} }
+\usepackage[letterpaper, landscape, margin=1.5in]{geometry}
+\usepackage{parskip}
+\begin{document}
+\textbf{Name:Kedar}\newline
+\textbf{username:kgundlup}\newline
+\paragraph{1.1}
+\textbf{a.}
+Term Frequency- Inverse Document Frequency(tf-idf) will give weight for each term appearing in each document. The benefits are\newline
+1) $\frac{m_{ij}}{m_{i}}$ denotes the term frequency. Dividing $m_{ij}$(total number of occurences of term 'i' in document 'j') by $m_{j}$(total terms in document 'j') normalises the term frequency. Since the documents varies in length, a term might appear more number of times in a longer document compared to a shorter document. Hence dividing $m_{ij}$ by number of terms in the document ${j}$ normalizes the term frequency.\newline
+2)Some words like 'is','the','and' etc common words appear across almost all documents. Hence they won't help us to uniquely identify the relevant documents. In other words, these common words do not acts as unique discrminators. Hence log$\frac{n}{n_{j}}$ scales down the weight of a term which appears in many documents. On the other hand, it scales up the weight of the term which is rare across documents.\newline
+
+By normalising the term frequency and inverting document frequency, TF-IDF helps to retrieve the most relevant documents in information retrieval and text mining.\newline
+
+\textbf{1.2}\newline
+1) if we want to rank the documents based solely on the frequency of terms present in the document, then TF-IDF will scale down the documents if the term appears frequently across many other documents in document corpuswhich is indesirable in this situation. On the other hand $\frac{m_{ij}}{m_{i}}$ or $m_{ij}$ can be used in this use case\newline
+2) if the term is not contained within any of the document in document corpus, then $n=0$. Hence, $n_j=0$.$\frac{n}{n_{j}}$ becomes undefined in this case.
+This is not the case in $\frac{m_{ij}}{m_{i}}$ or $m_{ij}$.\newline
+3)Weightage of the term will be reduced if the term is common across many documents. This might cause the document to ranked lower in information retrieval
+
+\textbf{1.3}\newline
+a) \underline{If term appears in across one document.}\newline
+Then the value of log$\frac{n}{n_{j}}$ will be high which scales up the weight of this term as the term is rare in document corpus.\newline
+b)\underline{If term appears in all document.}\newline
+Then the value of $n_{j}$ will be equal to $n$. Hence the log$\frac{n}{n_{j}}$ will be less which scales down the weight for this term.
+
+\paragraph{2.}
+\includegraphics[scale=1]{triangle}
+Consider a right angle traingle\newline
+$\vec{x}$, $\vec{y}$ and $\vec{z}$ are vectors\newline
+Angle between $\vec{x}$ and $\vec{y}$ is $\theta$\newline
+We know that from cosine rule, we get\newline
+$$||z||^2 = ||x||^2 + ||y||^2-2||x||||y||cos\theta$$
+
+From the concept of vectors, we know that
+$$\vec{z} = \vec{y}-\vec{x}$$
+$$||\vec{z}||^2 = ||\vec{y}-\vec{x}||^2$$
+this is of form $$(a-b)^2 = a^2+b^2-2ab$$
+$$||\vec{z}||^2 = ||\vec{y}||^2-2yx+||x||^2$$
+Substituing in first equation of this problem(ie cosine rule)
+$$||\vec{y}||^2-2yx+||x||^2 = ||x||^2 + ||y||^2-2||x||||y||cos\theta$$
+$$\vec{x}.\vec{y} = ||\vec{x}||||\vec{y}||cos\theta$$
+Rearranging terms we get
+$$cos\theta = \vec{x}.\vec{y}/||\vec{x}||||\vec{y}||$$
+we know that the transpose of any vector matrix multiplied with non transpose of itself is equivalent to dot product.\newline
+Hence $$\vec{x}.\vec{y} = x^{T}y$$
+$$cos\theta = x^{T}y/||\vec{x}||||\vec{y}||$$
+
+\paragraph{3}
+\textbf{a}\newline
+$$|A-C|+|C-A| \leq |A-B|+|B-A| + |B-C|+|C-B|$$
+$$|A|+|C|-2|A \cap C| \leq |A|+|B|-2|A \cap B| + |B|+|C|-2|B \cap C|$$
+$|A|$ and $|C|$ in LHS and RHS gets cancelled
+$$2|A \cap B|+2|B \cap C| \leq 2|B| + 2|A \cap C|$$
+$$|A \cap B|+|B \cap C| \leq |B| + |A \cap C|$$
+we can prove this as metric if maximum value of LHS is less than or equal to minimum value of RHS.\newline
+LHS can get maximum value if set B is contained within set A and C. In this case $|A \cap B| = |B|$ and $|B \cap C| = |B|$
+$$2|B|\leq|B|+|A\cap C|$$
+As set B is contained within set A and C, this means either Set A is also contained within set C or vice versa. Hence, $|A\cap C| > |B|$\newline
+Because $|A\cap C|>|B|$, the RHS will always be greater than $2|B|$\newline
+
+Only other case where LHS becomes maximum is if set A and C are contained within set B. Then,
+$$|A\cap B| = |A|$$
+$$|B\cap C| = |C|$$
+$$|A|+|C| \leq |B| + |A \cap C|$$
+Because set A and C are contained within set B, the value of $|A \cap C| \geq |B|$
+Hence $$2|B|\geq2|B|$$
+Hence it is metric\newline 
+\textbf{3.b}
+$$\frac{|A-C|+|C-A|}{|A\cap C|} \leq \frac{|A-B|+|B-A|}{|A \cap B|}+\frac{|B-C|+|C-B|}{|B \cap C|}$$
+$$\frac{|A|+|C|-2|A \cap C|}{|A\cap C|} \leq \frac{|A|+|B|-2|A \cap B|}{|A\cap B|} + \frac{|B|+|C|-2|B \cap C|}{|B\cap C|}$$
+We know that from set theory that $|A \cap C| = |A|+|C|- |A\cup C|$
+Substituting this , we get
+$$ \frac{-|A|-|C|}{|A\cup C|}+2 \leq \frac{-|A|-|B|}{|A\cup B|}+2 \frac{-|B|-|C|}{|B\cup C|}+2$$
+by simplifying we get.
+$$\frac{|A|+|B|}{|A\cup B|}+\frac{|B|+|C|}{|B\cup C|} \leq \frac{|A|+|C|}{|A\cup C|}+2$$
+The maximum value the LHS can get is when $|A\cap B|=0$ and $|B \cap C|=0$
+$$2\leq\frac{|A|+|C|}{|A\cup C|}+2$$
+$$\frac{|A|+|C|}{|A\cup C|}$$ cannot be zero. Hence RHS will be greater than LHS. hence proved.
+
+\textbf{3.c}
+Disproving user counter example
+$$A={11,12,13}$$
+$$C={14,15,16}$$
+$$B={11,12,13,14,15,16}$$
+$$|A\cap C|=0$$
+$$|A\cap B|=3$$
+$$|B\cap C|=3$$
+$$(1-(\frac{1}{2}\frac{|A\cap C|}{|A|}+\frac{1}{2}\frac{|A\cap C|}{|C|})) \leq (1-(\frac{1}{2}\frac{|A\cap B|}{|A|}+\frac{1}{2}\frac{|A\cap B|}{|B|}))+(1-(\frac{1}{2}\frac{|B\cap C|}{|B|}+\frac{1}{2}\frac{|B\cap C|}{|C|}))$$
+Substituting the values. LHS becomes zero $|A \cap C| = 0$
+$$1\leq 2 - (\frac{1}{2}(\frac{3}{3})+\frac{1}{2}(\frac{3}{6})) - (\frac{1}{2}(\frac{3}{3})+\frac{1}{2}(\frac{3}{6}))$$
+$$1\leq 2 - \frac{6}{8} - \frac{6}{8}$$
+$$1\leq 2-\frac{3}{2}$$
+$$1\leq \frac{1}{2}$$
+Hence disproved
+
+\textbf{3.d}
+Simplifying the equation gives \newline
+$$1-2(\frac{|A\cap C}{|A|+|C|}) \leq (2 - 2(\frac{|A\cap B|}{|A|+|B|})-2(\frac{|B\cap C|}{|B|+|C|})$$
+
+Disproving user counter example
+$$A={11,12,13}$$
+$$C={14,15,16}$$
+$$B={11,12,13,14,15,16}$$
+$$|A\cap C|=0$$
+$$|A\cap B|=3$$
+$$|B\cap C|=3$$
+$$1 \leq 2-2(2(\frac{3}{9})-2(\frac{3}{9}))$$
+$$1 \leq 2-(\frac{6}{9})-(\frac{6}{9}))$$
+$$1 \leq 2-(\frac{4}{3}))$$
+$$1 \leq (\frac{2}{3})$$
+hence disproved
+
+\paragraph{4.1}
+\includegraphics[scale=0.5]{charts}
+
+The code is in folder  '4'. For each $'k'$, I repeated the experiment 10 times to get stable values.\newline
+
+\textbf{4.b}
+\textbf{Observations}\newline
+1) As the attributes increases the time required to compute r(k) increases.\newline
+2) In all three cases (number of data points = 100,1000, 10000), as the dimensionality increases, the r(k) decreases. This means as the dimensionality increases, the data points are moving towards the boundary of the space in higher dimensions. Hence the dmax and dmin increases.\newline
+3) This happens because, as the dimensionality increases, the space increases. Hence the data points gets sparser as the dimensionality increases.\newline
+4) Because the points get sparse and move towards boundary of the space in high dimensionality, the process like classification becomes tough to perform.\newline
+
+\textbf{Expectation}\newline
+1) I expected the computation time required to calculate r(k) increases as 'k' increases.
+1)Even though the space increases as the dimensionality increases, I didn't expect the data points to get sparser and move towards the boundary of the space in higher dimensions. In other words, I didn't expect the r(k) value to decrease as 'k' increases.\newline
+
+\textbf{Comparision}\newline
+1)Before carrying out the experiment, I expected the r(k) value to remains same thoughout k=1 to 100. The data getting sparser in higher dimensionality seems to be very counter-intuitive to me. That's probably because human minds can only visualise 3D space. We cannot visualise what happens in higher dimensions.
+
+\paragraph{5}
+\textbf{5.a}\newline
+The naive algorithm gave the Mean Average Value of 0.80623.\newline
+
+I tried calculating euclidean, manhattan and lmax values. The attributes are the common movie ratings for both the users. The common movies are included as the attributes based on the assumption it will provide the most similar 'k' users. \newline
+Below are the different experiments I carried out \newline
+\textbf{a)} $k=15$\newline
+Euclidean MAD 0.960981\newline
+Manhattan MAD 0.920685\newline
+Lmax MAD 0.872578\newline
+
+\textbf{b)}$k=10$\newline
+Euclidean MAD 1.046895\newline
+Manhattan MAD 0.998557\newline
+Lmax MAD 0.872578\newline
+
+\textbf{c)}$k=5$\newline
+Euclidean MAD 0.960981\newline
+Manhattan MAD 0.920685\newline
+Lmax MAD 0.872578\newline
+
+However, as the results show above, only including the common movies as attributes to calcuate distance didn't improve the MAD value. Even change of 'k' value didn't help much in improving the MAD score. Because we used only common movies as attributes, the 'K' similar users that algorithm found are actually not the top 'K' similar users. To improve this algorithm, we should identify and include other attributes along with common movies which help us to find 'actual' top 'K' similar users.\newline  
+
+
+\textbf{5.b}\newline
+I included age as another attribute along with common movies. Reasioning behind this is, the users with closer age will same taste of movies. Hence, it helps us to find top 'K' similar users. Below are the experiments I carried out\newline
+a)$K=15$\newline
+Euclidean MAD 0.849620\newline
+Manhattan MAD 0.881700\newline
+Lmax MAD 0.839351\newline
+
+b) $K=10$\newline
+Euclidean MAD 0.862765\newline
+Manhattan MAD 0.911357\newline
+Lmax MAD 0.852811\newline
+
+c) $K=50$\newline
+Euclidean MAD 0.825687\newline
+Manhattan MAD 0.824204\newline
+Lmax MAD 0.820774\newline
+
+
+As we can observe, after we included age as another attribute, the MAD values have improved. It further increases, as the 'K' value is increased. This shows that 'age' helps us to identify the top 'K' users better than common movies attributes alone.\newline
+
+\textbf{5c}
+As the 10 million data sets r1 to r5 are not correctly formatted, I used ra.train, ra.test, rb.train and rb.test. \newline
+
+Tha naive algorithm gave a MAD value of 0.76563
+
+Below are the experiments I carried out\newline
+1)This experiment was carried out by taking only common movies as attributes.\newline
+$K=15$\newline
+Euclidean MAD 1.473019\newline
+Manhattan MAD 1.324974\newline
+Lmax MAD 0.813423\newline
+
+$K=10$
+Euclidean MAD 1.376345\newline
+Manhattan MAD 1.129367\newline
+Lmax MAD 0.896276\newline
+
+$K=50$
+Euclidean MAD 0.930597\newline
+Manhattan MAD 0.896494\newline
+Lmax MAD 0.876800\newline
+
+As it happened in 100k dataset, even in 10M dataset including only common movies as attributes doesn't give us good MAD value.\newline
+
+Since 10M doesn't give user's age information, I decided to include genre as an attribute along with common movies. Here, I will to to include common mvies to calculate the distance only if one of their genres matches with the yet to be predicted movie's genre. The idea behind this is if we considering only the common movies of same genre we get better 'K' users which inturn helps to get better predicted value.
+
+$K=15$\newline
+Euclidean MAD 1.053247\newline
+Manhattan MAD 1.208792\newline
+Lmax MAD 0.863541\newline
+
+$K=10$
+Euclidean MAD 1.129834\newline
+Manhattan MAD 1.367001\newline
+Lmax MAD 0.87651\newline
+
+$K=50$
+Euclidean MAD 0.96534\newline
+Manhattan MAD 0.97565\newline
+Lmax MAD 0.800453\newline
+
+As we can observe, the MAD score has improved compared with experiments which took only common movie attributes. Identifying more these kind of attributes help us to improve our MAD score.\newline
+
+\textbf{5d}
+1) To get better MAD score, we have to find and include attributes which helps to improve our accuracy of our prediction. \newline
+2) As there many things in dataset that can be chosen as attributes, the space of attributes is very big. We have to select a optimal combination of attributes. As the space is very big, choosing this optimal combination of attributes cannot be done in brute force way.\newline
+3) Hence, to improve the accuracy, finding optimal combination of attributes is important. I feel this is where data mining algorithm plays important role. By making the models learn through training data, we can get optimal attributes from the model. Developing the model to this will be ideal way to improvise the MAD score.\newline
+
+
+\end{document}
+
+
